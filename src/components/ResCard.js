@@ -11,6 +11,7 @@ const ResCard = (props) => {
     avgRating,
     costForTwo,
     cuisines,
+    areaName,
     sla,
 
   } = resData;
@@ -22,17 +23,20 @@ const ResCard = (props) => {
   const truncatedCuisines = cuisines.join(', ').length > 30 ? `${cuisines.join(', ').slice(0, 30)}...` : cuisines.join(', ');
    name = name.length > 20 ? `${name.slice(0, 20)}...` : name;
   return (
-    <div className="restaurant-card rounded-md m-4 p-4 w-[300px] h-[350px]
-     shadow-md border border-solid border-blue-200" 
-     style={{ backgroundColor: '#fcfcfc' }} data-testid='resCard'>
+    <div className="restaurant-card rounded-md m-4 p-2 w-[270px] h-[350px]
+     shadow-md border border-solid border-blue-200 bg-white" 
+      data-testid='resCard'>
       <img className="restaurant-img rounded-md  h-[200px] w-[300px]" src={`https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/${cloudinaryImageId}`} alt="Restaurant" />
       <div className="restaurant-info">
         <h2 className="restaurant-name font-bold p-2">{name}</h2>
-        <p className="cuisine">{truncatedCuisines}</p>
-        <div className="ratings">
-          <p className="average-rating fa-solid fa-star">{avgRating} ⭐️</p>
-          
-          <p className="delivery-time"> {sla.deliveryTime} min</p>
+        <p className="px-2">{truncatedCuisines}</p>
+        <p className='px-2'>{areaName}</p>
+        <div className="flex items-center justify-between gap-2 m-2 text-sm font-bold">
+          <p className="bg-green-600 text-white p-1 rounded-md">{avgRating} ⭐️</p>
+          <h4>•</h4>
+          <p className="delivery-time"> {sla.deliveryTime} MIN</p>
+          <h4>•</h4>
+          <p className="delivery-time"> {costForTwo}</p>
         </div>
         
       

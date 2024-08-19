@@ -38,7 +38,7 @@ const Body = () => {
     const PromotedResCard = PromotedCard(ResCard);
 
     
-  return (restaurantList.length === 0)? <Shimmer/> :(
+  return (restaurantList.length === 0)? <div className='flex justify-center items-center flex-wrap'>{Array(15).fill(0).map((_,index)=>(<Shimmer key={index}/>))}</div> :(
     <div className="body my-8">
       <div className='filter flex justify-center items-center'>
       <div className='search m-4 p-4'>
