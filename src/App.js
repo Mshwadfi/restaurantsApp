@@ -1,25 +1,58 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { lazy, Suspense, useEffect, useState } from 'react';
+import { Provider } from 'react-redux';
+import { createBrowserRouter, RouterProvider, Outlet } from 'react-router-dom';
+import Header from './components/Header';
+import Footer from './components/Footer';
+import Contact from './components/Contact';
+import Cart from './components/Cart';
+import Error from './components/Error';
+import ResMenu from './components/ResMenu';
+import AppStore from './utils/AppStore';
+import './index.css';
 
-function App() {
+const About = lazy(() => import('./components/About'));
+const Body = lazy(() => import('./components/Body'));
+
+const App = () => {
+  const [userName, setUserName] = useState(null);  // Use null or a default value
+
+  useEffect(() => {
+    const data = {
+      name: 'Muhammad'
+    };
+    setUserName(data.name);
+  }, []);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Provider store={AppStore}>
+      <div className="app">
+        <Header />
+        <Outlet />  {/* This is where React Router will render the matched route component */}
+        <Footer />
+      </div>
+    </Provider>
   );
-}
+};
 
-export default App;
+// Define routes
+const appRouter = createBrowserRouter([
+  {
+    path: '/',
+    element: <App />,
+    children: [
+      { path: '/', element: <Suspense fallback={"Loading..."}><Body /></Suspense> },
+      { path: '/about', element: <Suspense fallback={"Loading..."}><About /></Suspense> },
+      { path: '/contact', element: <Contact /> },
+      { path: '/cart', element: <Cart /> },
+      { path: '/restaurants/:resId', element: <ResMenu /> },
+    ],
+    errorElement: <Error />,
+  }
+]);
+
+// Export the router provider for usage
+const RouterApp = () => (
+  <RouterProvider router={appRouter} />
+);
+
+export default RouterApp;
