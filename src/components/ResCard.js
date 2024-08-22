@@ -32,7 +32,7 @@ const ResCard = (props) => {
         <p className="px-2">{truncatedCuisines}</p>
         <p className='px-2'>{areaName}</p>
         <div className="flex items-center justify-between gap-2 m-2 text-sm font-bold">
-          <p className="bg-green-600 text-white p-1 rounded-md">{avgRating} ⭐️</p>
+          <p className="bg-green-600 text-white p-1 rounded-md">{avgRating} ✰</p>
           <h4>•</h4>
           <p className="delivery-time"> {sla.deliveryTime} MIN</p>
           <h4>•</h4>

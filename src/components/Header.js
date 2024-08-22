@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import useOnlineOffline from '../utils/useOnlineOffline';
 import { useSelector } from 'react-redux';
+import { SHOPPING_CART } from '../utils/constants';
 const Header = () => {
 
     const [btnName , setbtnName] = useState('Login');
@@ -17,11 +18,13 @@ const Header = () => {
             </div>
             
             <div className="flex items-center">
-                <ul className='flex p-4 m-4'>
+                <ul className='flex p-4 m-4 items-center'>
                     <li className='px-4'>{onlineOffline ? "Online: 🟢" : "Offline: 🔴"}</li>
                     <li className='px-4'><Link to={'/'}>Home</Link></li>
                     <li className='px-4'><Link to={'/'}>Restaurants</Link></li>
-                    <li className='px-4 font-bold'><Link to={'/Cart'}>Cart ({cartItems.length } - items)</Link></li>
+                    <li className='px-4 font-bold flex items-center justify-between'>
+                        <Link to={'/Cart'}><img src={SHOPPING_CART} alt='cart' className='w-8 h-8 bg-white'/>
+                        </Link><p>{cartItems.length? '+' + cartItems.length : "" }</p></li>
                     <li className='px-4'><Link to={'/about'}>About Us</Link></li>
                     
                 </ul>

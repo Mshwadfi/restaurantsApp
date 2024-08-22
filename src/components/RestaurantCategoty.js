@@ -4,7 +4,7 @@ import MenuItemList from "./MenuItemList";
 
 const RestaurantCategory = ({category , showItems , setShowIndex}) =>{
     
-
+    const [showItemsIndex , setShowItemsIndex] = useState(false);
     const handleClick = (e) =>{
        setShowIndex(e.target.index)
        
@@ -16,9 +16,8 @@ const RestaurantCategory = ({category , showItems , setShowIndex}) =>{
     const idx = title.indexOf('(');
     const name = title.slice(0,idx);
     return(
-        <div className="res-cat bg-slate-50 w-6/12 mx-auto my-3 shadow-md p-4">
-           <div className="flex justify-between cursor-pointer" onClick={handleClick}>
-                {/*header*/}
+        <div className="res-cat bg-white w-6/12 mx-auto my-3 ">
+           <div className="flex justify-between cursor-pointer bg-gray-50 p-2 rounded-md" onClick={handleClick}>
                 <span className="font-bold">{name} ({category.itemCards.length})</span>
                 <span>↓</span>
            </div>

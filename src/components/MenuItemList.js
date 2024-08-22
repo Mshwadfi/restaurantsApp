@@ -1,5 +1,6 @@
 import { useDispatch } from "react-redux";
 import { addItem } from "../utils/cartSlice";
+import { ITEM_IMJ } from "../utils/constants";
 
 
 const MenuItemList = ({ items }) => {
@@ -9,23 +10,28 @@ const MenuItemList = ({ items }) => {
     dispatch(addItem(item));
     // console.log(e.target.parentNode)
   }
+  console.log(items,'hello')
   
   return (
-    <div className="">
+    <div className="flex flex-col gap-2">
       {items.map((item) => (
         <div key={item.card.info.id} 
-        className="p-2 m-2 border-gray-150 border-b-2 
+        className="flex justify-between  gap-2 p-2 border-gray-150 border-b-2 
         text-left" data-testid='menuItem'>
-          <div>
-            <span className="py-2">{item.card.info.name}</span> - 
-            <span> {item.card.info.price / 100}</span>
+          <div className="flex flex-col gap-1 ">
+            <h2 className="font-bold">{item.card.info.name} - {item.card.info.price / 100}$</h2>
+            <p className="text-xs">{item.card.info.description}</p>
           </div>
-          <p className="text-xs">{item.card.info.description}</p>
           
-          <button className="bg-blue-500 text-white p-2 rounded"
-          onClick={() => handleAddItem(item)}>
-            Add to Cart
-          </button>
+          <div className="flex flex-col gap-2">
+            <img alt="item" src={ITEM_IMJ + item?.card?.info?.imageId} className="min-w-24 w-24 h-24 rounded-md"/>
+            <button className="bg-orange-500 text-white px-2 py-1 rounded text-lg mb-3"
+            onClick={() => handleAddItem(item)}>
+              Add+
+            </button>
+            {console.log('jj')}
+          </div>
+
         </div>
       ))}
     </div>
