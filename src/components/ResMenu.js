@@ -1,7 +1,6 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { MenuShimmer } from "./shimmer/DynamicShimmer";
 import { useParams } from "react-router-dom";
-import { ITEM_IMJ } from "../utils/constants";
 import RestaurantCategory from './RestaurantCategoty'
 import useRestaurantMenu from "../utils/useRestaurantMenu";
 
@@ -18,7 +17,7 @@ const ResMenu = () => {
     const {
         name,
         cuisines,
-        areaName,
+        
         sla,
         cloudinaryImageId,
         avgRating,
@@ -27,8 +26,8 @@ const ResMenu = () => {
     } = resInfo.cards[2].card.card.info;
     console.log(resInfo.cards[2].card.card.info)
 
-    const { itemCards } =
-    resInfo?.cards[4].groupedCard.cardGroupMap.REGULAR.cards[1].card.card;
+    // const { itemCards } =
+    // resInfo?.cards[4].groupedCard.cardGroupMap.REGULAR.cards[1].card.card;
     const categories = resInfo?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards.filter(
       (c) =>
         c.card?.card?.["@type"] ==="type.googleapis.com/swiggy.presentation.food.v2.ItemCategory" 
