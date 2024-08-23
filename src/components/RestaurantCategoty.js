@@ -1,10 +1,8 @@
 
-import { useState } from "react";
 import MenuItemList from "./MenuItemList";
 
 const RestaurantCategory = ({category , showItems , setShowIndex}) =>{
     
-    const [showItemsIndex , setShowItemsIndex] = useState(false);
     const handleClick = (e) =>{
        setShowIndex(e.target.index)
        
@@ -21,7 +19,7 @@ const RestaurantCategory = ({category , showItems , setShowIndex}) =>{
                 <span className="font-bold">{name} ({category.itemCards.length})</span>
                 <span>↓</span>
            </div>
-            {showItems && <MenuItemList items = {category.itemCards}/>}
+            {showItems && <MenuItemList items = {category.itemCards} button={'Add'}/>}
         </div>
     )
 }

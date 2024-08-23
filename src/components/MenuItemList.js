@@ -1,13 +1,13 @@
 import { useDispatch } from "react-redux";
-import { addItem } from "../utils/cartSlice";
+import { addItem, removeItem } from "../utils/cartSlice";
 import { ITEM_IMJ } from "../utils/constants";
+import { REMOVE_ICON } from "../utils/constants";
 
-
-const MenuItemList = ({ items }) => {
+const MenuItemList = ({ items , button }) => {
 
   const dispatch = useDispatch();
-  const handleAddItem = (item) =>{
-    dispatch(addItem(item));
+  const handleAddItem = (item , action) =>{
+    action === 'Add'? dispatch(addItem(item)) : dispatch(removeItem());
     // console.log(e.target.parentNode)
   }
   console.log(items,'hello')
@@ -25,9 +25,9 @@ const MenuItemList = ({ items }) => {
           
           <div className="flex flex-col gap-2">
             <img alt="item" src={ITEM_IMJ + item?.card?.info?.imageId} className="min-w-24 w-24 h-24 rounded-md"/>
-            <button className="bg-orange-500 text-white px-2 py-1 rounded text-lg mb-3"
-            onClick={() => handleAddItem(item)}>
-              Add+
+            <button className={`${button === 'Remove'? 'bg-red-700' : 'bg-orange-500' } text-white px-2 py-1 rounded text-lg mb-3`}
+            onClick={() => handleAddItem(item , button)}>
+              {button === 'Add'? 'Add+' : 'Remove'}
             </button>
             {console.log('jj')}
           </div>

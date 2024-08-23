@@ -25,16 +25,17 @@ const App = () => {
 
   return (
     <Provider store={AppStore}>
-      <div className="app">
+      <div className="flex flex-col min-h-screen">
         <Header />
-        <Outlet />  {/* This is where React Router will render the matched route component */}
+        <div className='flex-grow'>
+          <Outlet />
+        </div>  
         <Footer />
       </div>
     </Provider>
   );
 };
 
-// Define routes
 const appRouter = createBrowserRouter([
   {
     path: '/',

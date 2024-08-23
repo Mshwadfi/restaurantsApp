@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import Shimmer from "./Shimmer";
+import { MenuShimmer } from "./shimmer/DynamicShimmer";
 import { useParams } from "react-router-dom";
 import { ITEM_IMJ } from "../utils/constants";
 import RestaurantCategory from './RestaurantCategoty'
@@ -11,9 +11,10 @@ const ResMenu = () => {
     const {resId} = useParams();
     const resInfo = useRestaurantMenu(resId);
     console.log(resInfo);
-   const [showIndex , setShowIndex] = useState();
-    if (!resInfo) return <Shimmer />;
+   const [showIndex , setShowIndex] = useState(0);
+    if (!resInfo) return <MenuShimmer />;
 
+   
     const {
         name,
         cuisines,
@@ -34,7 +35,6 @@ const ResMenu = () => {
       
     );
   
- 
    
 return (
     <div className="menuItems text-center">
