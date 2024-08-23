@@ -34,26 +34,26 @@ const ResMenu = () => {
       
     );
   
-   
+   console.log(categories)
 return (
     <div className="menuItems text-center">
       <div>
-        <div className="flex items-center gap-2 border-2 border-solid rounded-md p-2 w-6/12 mx-auto my-4">
-          <img className="restaurant-img rounded-md  h-[130px] w-[200px]" src={`https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/${cloudinaryImageId}`} alt="Restaurant" />
-          <div className="">
-            <h2 className="font-bold">{name}</h2>
-            <p>{cuisines.join(", ")}</p>
-            <div className="flex items-center justify-between gap-2 m-2 text-sm font-bold">
+        <div className="flex flex-col gap-1 bg-black items-start w-full sm:flex-row sm:items-center sm:gap-2 sm:border-2 border-solid sm:rounded-md p-2 sm:w-6/12 sm:mx-auto my-4">
+          <img className="restaurant-img rounded-md mt-4 mx-2 sm:m-2 sm:h-[130px] w-[200px]" src={`https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/${cloudinaryImageId}`} alt="Restaurant" />
+          <div className="text-start text-white mx-2">
+            <h2 className="font-bold ">{name}</h2>
+            <p className="">{cuisines.join(", ")}</p>
+            <div className="flex items-center justify-between gap-2 text-sm font-bold">
               <p className="bg-green-600 text-white p-1 rounded-md">{avgRating} ✰</p>
               <h4>•</h4>
-              <p className="delivery-time"> {sla?.deliveryTime || 5} MIN</p>
+              <p className="delivery-time"> {sla?.deliveryTime || 5} MINs</p>
               <h4>•</h4>
               <p className="delivery-time"> {costForTwo/1000}$</p>
             </div>
           </div>
         </div>
         {
-          categories.map((cat , index)=>(
+          categories?.map((cat , index)=>(
             <RestaurantCategory category = {cat?.card?.card}
             showItems = {index === showIndex? true : false}
             setShowIndex={() => setShowIndex(index)}

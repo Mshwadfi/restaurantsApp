@@ -18,7 +18,7 @@ const MenuItemList = ({ items , button }) => {
         className="flex justify-between  gap-2 p-2 border-gray-150 border-b-2 
         text-left" data-testid='menuItem'>
           <div className="flex flex-col gap-1 ">
-            <h2 className="font-bold">{item.card.info.name} - {item.card.info.price / 100}$</h2>
+            <h2 className="font-bold">{item.card.info.name} - {item.card.info?.price / 100 || 20}$</h2>
             <p className="text-xs">{item.card.info.description}</p>
           </div>
           

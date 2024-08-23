@@ -1,43 +1,81 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { SHOPPING_CART } from '../utils/constants';
+
 const Header = () => {
-
-    // const [btnName , setbtnName] = useState('Login');
-    // const onlineOffline = useOnlineOffline();
-
-    //subscribing to the store using sellector
+    const [isMenuOpen, setIsMenuOpen] = useState(false);
     const cartItems = useSelector((store) => store.cart.items);
-    console.log(cartItems);
-    return (
-        <div className="flex justify-between shadow-md h-[100px]">
-            <div className="logo">
-                <img className='w-56 h-[100px]' src="https://i.pinimg.com/originals/b1/fc/bb/b1fcbbfd4fb8116c714ef352bb39bbaf.jpg" alt="Logo" />
-            </div>
-            
-            <div className="flex items-center">
-                <ul className='flex p-4 m-4 items-center'>
-                    {/* <li className='px-4'>{onlineOffline ? "Online: 🟢" : "Offline: 🔴"}</li> */}
-                    <li className='px-4'><Link to={'/'}>Home</Link></li>
-                    <li className='px-4'><Link to={'/contact'}>Contact</Link></li>
-                    <li className='px-4 font-bold flex items-center justify-between'>
-                        <Link to={'/Cart'}><img src={SHOPPING_CART} alt='cart' className='w-8 h-8 bg-white'/>
-                        </Link><p className='text-orange-500'>{cartItems.length? '+' + cartItems.length : "" }</p></li>
-                    {/* <li className='px-4'><Link to={'/about'}>About Us</Link></li> */}
-                    
-                </ul>
-                {/* <button className='login' onClick={() =>{
-                    (btnName === 'Login')? setbtnName('Logout') :
-                     setbtnName('Login');
-                } }>
 
-                <strong>{btnName}</strong></button> */}
+    const toggleMenu = () => {
+        setIsMenuOpen(!isMenuOpen);
+    };
+
+    return (
+        <header className="flex flex-col sm:flex-row sm:justify-between items-center w-full p-4 bg-white shadow-md h-auto sm:h-[100px]">
+            {/* Logo and Hamburger Menu Button */}
+            <div className="flex justify-between items-center w-full sm:w-auto">
+                <img 
+                    className='w-40 sm:w-56 h-[80px] sm:h-[100px]' 
+                    src="https://i.pinimg.com/originals/b1/fc/bb/b1fcbbfd4fb8116c714ef352bb39bbaf.jpg" 
+                    alt="Logo" 
+                />
+                {/* Hamburger Menu Button (visible on small screens) */}
+                <button 
+                    className="sm:hidden flex items-center px-3 py-2 border rounded text-gray-700 border-gray-700"
+                    onClick={toggleMenu}
+                >
+                    <svg className="fill-current h-6 w-6" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                        <title>Menu</title>
+                        <path d="M0 3h20v2H0V3zm0 5h20v2H0V8zm0 5h20v2H0v-2z" />
+                    </svg>
+                </button>
             </div>
-            <div className="user-actions">
+
+            {/* Navigation Menu for Desktop */}
+            <nav className="hidden sm:flex items-center w-full sm:w-auto">
+                <ul className='flex items-center space-x-4'>
+                    <li><Link to={'/'}>Home</Link></li>
+                    <li><Link to={'/contact'}>Contact</Link></li>
+                    <li className='flex items-center'>
+                        <Link to={'/Cart'}>
+                            <img src={SHOPPING_CART} alt='cart' className='w-8 h-8 bg-white' />
+                        </Link>
+                        <p className='text-orange-500 ml-2'>{cartItems.length ? '+' + cartItems.length : ""}</p>
+                    </li>
+                </ul>
+            </nav>
+
+            {/* Mobile Menu */}
+            <div 
+                className={`fixed top-0 left-0 z-10 w-full h-full bg-white shadow-lg transition-transform duration-300 ease-in-out transform ${isMenuOpen ? 'translate-x-0' : '-translate-x-full'} sm:hidden`}
+            >
+                <div className="flex justify-between items-center p-4 border-b">
+                    <h2 className="text-xl font-bold">Menu</h2>
+                    <button onClick={toggleMenu} className="text-gray-700">
+                        <svg className="fill-current h-6 w-6" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                            <title>Close Menu</title>
+                            <path d="M6 6L14 14M6 14L14 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                        </svg>
+                    </button>
+                </div>
+                <ul className="p-4">
+                    <li className="py-2"><Link to={'/'} onClick={()=> setIsMenuOpen(false)}>Home</Link></li>
+                    <li className="py-2"><Link to={'/contact'} onClick={()=> setIsMenuOpen(false)}>Contact</Link></li>
+                    <li className="py-2 flex items-center">
+                        <Link to={'/Cart'} onClick={()=> setIsMenuOpen(false)}>
+                            <img src={SHOPPING_CART} alt='cart' className='w-8 h-8 bg-white' />
+                        </Link>
+                        <p className='text-orange-500 ml-2'>{cartItems.length ? '+' + cartItems.length : ""}</p>
+                    </li>
+                </ul>
+            </div>
+
+            {/* User Actions (hidden on small screens) */}
+            <div className="user-actions hidden sm:block">
                 {/* User action icons here (search, offers, help, sign in, cart) */}
             </div>
-        </div>
+        </header>
     );
 };
 
