@@ -48,7 +48,7 @@ const Header = () => {
 
             {/* Mobile Menu */}
             <div 
-                className={`fixed top-0 left-0 z-10 w-full h-full bg-white shadow-lg transition-transform duration-300 ease-in-out transform ${isMenuOpen ? 'translate-x-0' : '-translate-x-full'} sm:hidden`}
+                className={`fixed top-0 left-0 z-10 w-[50%] h-full bg-white shadow-lg transition-transform duration-300 ease-in-out transform ${isMenuOpen ? 'translate-x-0' : '-translate-x-full'} sm:hidden`}
             >
                 <div className="flex justify-between items-center p-4 border-b">
                     <h2 className="text-xl font-bold">Menu</h2>
