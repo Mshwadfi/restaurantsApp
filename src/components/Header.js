@@ -1,12 +1,11 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
-import useOnlineOffline from '../utils/useOnlineOffline';
 import { useSelector } from 'react-redux';
 import { SHOPPING_CART } from '../utils/constants';
 const Header = () => {
 
-    const [btnName , setbtnName] = useState('Login');
-    const onlineOffline = useOnlineOffline();
+    // const [btnName , setbtnName] = useState('Login');
+    // const onlineOffline = useOnlineOffline();
 
     //subscribing to the store using sellector
     const cartItems = useSelector((store) => store.cart.items);

@@ -1,7 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import Usercontext from '../utils/Usercontext';
-import { useContext } from 'react';
 const ResCard = (props) => {
   const { resData } = props;
 

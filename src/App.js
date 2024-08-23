@@ -14,8 +14,8 @@ const About = lazy(() => import('./components/About'));
 const Body = lazy(() => import('./components/Body'));
 
 const App = () => {
-  const [userName, setUserName] = useState(null);  // Use null or a default value
-
+  const [userName, setUserName] = useState(null);  
+  console.log(userName)
   useEffect(() => {
     const data = {
       name: 'Muhammad'

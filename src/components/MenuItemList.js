@@ -1,7 +1,6 @@
 import { useDispatch } from "react-redux";
 import { addItem, removeItem } from "../utils/cartSlice";
 import { ITEM_IMJ } from "../utils/constants";
-import { REMOVE_ICON } from "../utils/constants";
 
 const MenuItemList = ({ items , button }) => {
 

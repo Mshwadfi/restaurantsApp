@@ -1,9 +1,8 @@
-import React, { useEffect, useState,useContext } from 'react';
+import React, { useEffect, useState } from 'react';
 import ResCard ,{PromotedCard} from './ResCard';
 import Shimmer from './Shimmer';
 import { Link } from 'react-router-dom';
 import useOnlineOffline from '../utils/useOnlineOffline';
-import Usercontext from '../utils/Usercontext';
 
 
 const Body = () => {
@@ -14,6 +13,7 @@ const Body = () => {
   useEffect(() => {
     console.log("Rendered");
     fetchData();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   
     const fetchData = async () => {
