@@ -12,7 +12,7 @@ const Header = () => {
     };
 
     return (
-        <header className="flex flex-col sm:flex-row sm:justify-between items-center w-full p-4 bg-white shadow-md h-auto sm:h-[100px]">
+        <header className="flex flex-col sm:flex-row sm:justify-between items-center p-4 bg-white shadow-md h-auto sm:h-[100px]">
             {/* Logo and Hamburger Menu Button */}
             <div className="flex justify-between items-center w-full sm:w-auto">
                 <img 

@@ -13,13 +13,13 @@ const MenuItemList = ({ items , button }) => {
   
   return (
     <div className="flex flex-col gap-2">
-      {items.map((item) => (
-        <div key={item.card.info.id} 
+      {items?.map((item) => (
+        <div key={item?.card?.info?.id} 
         className="flex justify-between  gap-2 p-2 border-gray-150 border-b-2 
         text-left" data-testid='menuItem'>
           <div className="flex flex-col gap-1 ">
             <h2 className="font-bold">{item.card.info.name} - {item.card.info?.price / 100 || 20}$</h2>
-            <p className="text-xs">{item.card.info.description}</p>
+            <p className="hidden sm:block sm:text-xs">{item.card.info.description}</p>
           </div>
           
           <div className="flex flex-col gap-2">

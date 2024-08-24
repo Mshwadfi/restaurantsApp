@@ -12,7 +12,7 @@ const Cart = () =>{
         <div className="p-4 m-4">
             
             <h1 className="font-bold text-center my-4">Cart</h1>
-            <div className="w-6/12 m-auto">
+            <div className="sm:w-6/12 m-auto">
                 <MenuItemList items={cartItems} button = {'Remove'}/>
                 {cartItems.length !== 0 && <button className="p-3 my-8 bg-red-700 text-white
                  rounded-md " onClick={handleClear}>Clear Cart</button>}
