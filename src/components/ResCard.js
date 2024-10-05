@@ -27,7 +27,7 @@ const ResCard = (props) => {
       className="restaurant-img rounded-md h-[200px] w-[300px]" 
       src={`https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_300,q_10/${cloudinaryImageId}`} 
       alt="Restaurant"
-      loading="lazy" 
+      // loading="lazy" 
     />
       <div className="restaurant-info">
         <h2 className="restaurant-name font-bold p-2">{name}</h2>
