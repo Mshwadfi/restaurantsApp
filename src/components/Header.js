@@ -17,7 +17,7 @@ const Header = () => {
             <div className="flex justify-between items-center w-full sm:w-auto">
                 <img 
                     className='w-40 sm:w-56 h-[80px] sm:h-[100px]' 
-                    src="https://i.pinimg.com/originals/b1/fc/bb/b1fcbbfd4fb8116c714ef352bb39bbaf.jpg" 
+                    src="../../public/logow.webp" 
                     alt="Logo" 
                 />
                 {/* Hamburger Menu Button (visible on small screens) */}

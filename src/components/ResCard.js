@@ -23,7 +23,12 @@ const ResCard = (props) => {
     <div className="restaurant-card rounded-md m-4 p-2 w-[270px] h-[350px]
      shadow-md border border-solid border-blue-200 bg-white" 
       data-testid='resCard'>
-      <img className="restaurant-img rounded-md  h-[200px] w-[300px]" src={`https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/${cloudinaryImageId}`} alt="Restaurant" />
+    <img 
+      className="restaurant-img rounded-md h-[200px] w-[300px]" 
+      src={`https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_300,q_10/${cloudinaryImageId}`} 
+      alt="Restaurant"
+      loading="lazy" 
+    />
       <div className="restaurant-info">
         <h2 className="restaurant-name font-bold p-2">{name}</h2>
         <p className="px-2">{truncatedCuisines}</p>

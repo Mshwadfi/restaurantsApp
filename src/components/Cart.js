@@ -8,6 +8,7 @@ const Cart = () =>{
        dispatch(clearCart()); 
     }
     const cartItems = useSelector((store) => store.cart.items)
+    if(cartItems.length === 0) return <h1 className="text-center font-bold my-4">you have no items!</h1>
     return(
         <div className="p-4 m-4">
             

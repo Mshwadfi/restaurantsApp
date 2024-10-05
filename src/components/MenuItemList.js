@@ -23,8 +23,8 @@ const MenuItemList = ({ items , button }) => {
           </div>
           
           <div className="flex flex-col gap-2">
-            <img alt="item" src={ITEM_IMJ + item?.card?.info?.imageId} className="min-w-24 w-24 h-24 rounded-md"/>
-            <button className={`${button === 'Remove'? 'bg-red-700' : 'bg-orange-500' } text-white px-2 py-1 rounded text-lg mb-3`}
+            <img alt="item" src={ITEM_IMJ + item?.card?.info?.imageId} className="min-w-24 w-24 h-24 rounded-md" loading="lazy"/>
+            <button className={`${button === 'Remove'? 'bg-red-700 hover:bg-red-800' : 'bg-orange-500 hover:bg-orange-600' } text-white px-2 py-1 rounded text-lg mb-3`}
             onClick={() => handleAddItem(item , button)}>
               {button === 'Add'? 'Add+' : 'Remove'}
             </button>
